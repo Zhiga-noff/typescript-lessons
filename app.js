@@ -1,8 +1,6 @@
 function sum(a, b) {
-  return a + b;
+    return a + b;
 }
-
-const n1 = 40;
-const n2 = 2;
-
+var n1 = 40;
+var n2 = 2;
 console.log(sum(n1, n2));
