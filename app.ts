@@ -1,9 +1,9 @@
-type IProduct = {
+interface IProduct {
   price: number;
   discount: number;
   isInstallment: boolean;
   months: number;
-};
+}
 
 const totalPrice = <T extends IProduct>({
   price,
@@ -11,15 +11,22 @@ const totalPrice = <T extends IProduct>({
   isInstallment,
   months,
 }: T): number => {
-  const res = 0;
-  return res;
+  let result: number = price;
+
+  if (isInstallment) {
+    result = price - result * (discount / 100);
+  }
+
+  result = result / months;
+
+  return result;
 };
 
-// const price = totalPrice({
-//   price: 100000,
-//   discount: 25,
-//   isInstallment: true,
-//   months: 12,
-// });
+const price = totalPrice({
+  price: 100_000,
+  discount: 25,
+  isInstallment: true,
+  months: 12,
+});
 
-// console.log(price); // 6250
+console.log(price); // 6250
